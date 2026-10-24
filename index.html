@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEURALCODE | Learn AI</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#080b16;--card:#11172a;--cyan:#55eaff;--purple:#9d79ff;--text:#f3f5ff;--muted:#a4acc5}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #202942;position:sticky;top:0;background:#080b16ee;z-index:5}
+.logo{font-size:21px;font-weight:bold;color:var(--cyan)}
+nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:13px}
+.hero{padding:65px 7% 55px;background:radial-gradient(ellipse at 80% 20%,#39216c66,transparent 45%)}
+.tag{color:var(--cyan);font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(38px,9vw,65px);line-height:1.08;margin:18px 0}
+h1 span{color:var(--cyan)}
+p{color:var(--muted)}
+.btn{display:inline-block;border:0;border-radius:9px;padding:12px 17px;margin:8px 5px 0 0;background:linear-gradient(100deg,#48ddf5,#a17aff);color:#080b16;font-weight:bold;text-decoration:none;cursor:pointer}
+.btn.secondary{background:#171e33;color:var(--text);border:1px solid #343e5c}
+section{padding:35px 6%}
+h2{font-size:27px;margin-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:22px}
+.card{background:var(--card);padding:22px;border:1px solid #252e48;border-radius:15px}
+.card h3{margin-top:8px}
+.icon{font-size:29px}
+.small{font-size:13px}
+.pill{color:var(--cyan);font-size:12px}
+button:hover,.btn:hover{filter:brightness(1.15)}
+#chatbox{height:240px;overflow-y:auto;background:#080d1a;border:1px solid #29324b;border-radius:12px;padding:13px;margin:15px 0}
+.msg{padding:9px 12px;border-radius:10px;margin:9px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot{background:#17233a}
+.user{background:#29305a;text-align:right}
+.chatrow{display:flex;gap:8px}
+input{min-width:0;flex:1;background:#080d1a;color:white;border:1px solid #37415d;border-radius:9px;padding:12px}
+#newsList .card{padding:17px}
+footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid #202942}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">✧ NEURALCODE</div>
+  <nav>
+    <a href="#learn">Learn</a>
+    <a href="#chat">AI Tutor</a>
+    <a href="#news">Tech News</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <div class="tag">YOUR JOURNEY STARTS HERE // 001</div>
+  <h1>Your first step<br>into the <span>future.</span></h1>
+  <p>Discover artificial intelligence in simple language.<br>
+  Learn something new. Imagine what you can create.</p>
+  <a class="btn" href="#learn">Start learning ↗</a>
+  <a class="btn secondary" href="#chat">Ask the AI tutor</a>
+  <p class="small">✦ Made for curious beginners</p>
+</div>
+
+<section id="learn">
+  <div class="tag">THE BASICS</div>
+  <h2>Explore Artificial Intelligence</h2>
+  <p>Big ideas, explained simply.</p>
+  <div class="grid">
+    <article class="card">
+      <div class="icon">🧠</div>
+      <h3>What is AI?</h3>
+      <p>Artificial intelligence is technology that can perform tasks such as understanding language, recognising patterns, and generating content.</p>
+      <button class="btn" onclick="learn('ai')">Learn more</button>
+      <div id="ai" hidden><p>AI systems learn patterns from data or follow programmed rules. They can be useful, but they can also make mistakes.</p></div>
+    </article>
+    <article class="card">
+      <div class="icon">🗣️</div>
+      <h3>What is a chatbot?</h3>
+      <p>A chatbot is a program that communicates with people through text or voice.</p>
+      <button class="btn" onclick="learn('botinfo')">Learn more</button>
+      <div id="botinfo" hidden><p>Some chatbots use AI models to understand prompts and generate responses. Others use predefined answers.</p></div>
+    </article>
+    <article class="card">
+      <div class="icon">💻</div>
+      <h3>What is coding?</h3>
+      <p>Coding means writing instructions that a computer can execute.</p>
+      <button class="btn" onclick="learn('codeinfo')">Learn more</button>
+      <div id="codeinfo" hidden><p>HTML structures a webpage, CSS styles it, and JavaScript adds interactive behaviour.</p></div>
+    </article>
+  </div>
+</section>
+
+<section id="chat">
+  <div class="tag">YOUR LEARNING COMPANION</div>
+  <h2>AI Tutor 💬</h2>
+  <p>Ask a beginner question about AI or coding.</p>
+  <div class="card">
+    <div id="chatbox" aria-live="polite">
+      <div class="msg bot">Hi! I'm the NEURALCODE demo tutor. Ask me what AI, HTML, CSS, or JavaScript means!</div>
+    </div>
+    <form id="chatform" class="chatrow">
+      <input id="question" placeholder="Ask a question..." autocomplete="off" required>
+      <button class="btn" type="submit">Send</button>
+    </form>
+    <p class="small">Demo mode: answers are generated from simple rules, not a live AI model.</p>
+  </div>
+</section>
+
+<section id="news">
+  <div class="tag">THE TECH RADAR</div>
+  <h2>AI & Tech Updates</h2>
+  <p>Sample news cards for your first version.</p>
+  <div id="newsList" class="grid">
+    <article class="card">
+      <div class="pill">AI EXPLAINER</div>
+      <h3>How AI assistants work</h3>
+      <p>Many AI assistants use language models trained to recognise patterns in text and generate useful responses.</p>
+      <p class="small">Educational overview · Not breaking news</p>
+    </article>
+    <article class="card">
+      <div class="pill">LEARN</div>
+      <h3>Why Python matters</h3>
+      <p>Python is a popular beginner-friendly programming language used in automation, data science, and AI projects.</p>
+      <p class="small">Beginner guide · Not breaking news</p>
+    </article>
+    <article class="card">
+      <div class="pill">AI SAFETY</div>
+      <h3>Think critically about AI</h3>
+      <p>AI-generated answers can be inaccurate. Check important claims against trustworthy sources.</p>
+      <p class="small">Digital literacy · Not breaking news</p>
+    </article>
+  </div>
+  <p class="small">These are example articles, not live news. A news API or trusted news feed is needed for current headlines.</p>
+</section>
+</main>
+
+<footer>
+  <div class="logo">NEURALCODE ✧</div>
+  <p>Learn today. Build tomorrow.</p>
+  <p class="small">A beginner educational project made with HTML, CSS & JavaScript.</p>
+</footer>
+
+<script>
+function learn(id){
+  const el=document.getElementById(id);
+  el.hidden=!el.hidden;
+}
+
+const form=document.getElementById("chatform");
+const input=document.getElementById("question");
+const box=document.getElementById("chatbox");
+
+function addMessage(text,kind){
+  const div=document.createElement("div");
+  div.className="msg "+kind;
+  div.textContent=text;
+  box.appendChild(div);
+  box.scrollTop=box.scrollHeight;
+}
+
+function answerQuestion(q){
+  q=q.toLowerCase();
+
+  if(q.includes("hello")||q.includes("hi")){
+    return "Hello! What would you like to learn about AI or coding?";
+  }
+  if(q.includes("html")){
+    return "HTML creates the structure of a webpage. For example, <h1>Hello</h1> creates a main heading.";
+  }
+  if(q.includes("css")){
+    return "CSS controls how a website looks: colours, spacing, fonts, layouts, and animations.";
+  }
+  if(q.includes("javascript")||q.includes("js")){
+    return "JavaScript makes websites interactive, for example by responding when someone clicks a button.";
+  }
+  if(q.includes("python")){
+    return "Python is a programming language known for readable syntax. It is used in automation, data analysis, and many AI projects.";
+  }
+  if(q.includes("chatbot")||q.includes("chat bot")){
+    return "A chatbot is software that communicates with users. AI chatbots can use a language model to generate answers.";
+  }
+  if(q.includes("machine learning")||q.includes("learn")){
+    return "Machine learning is a branch of AI in which systems learn patterns from data to make predictions or decisions.";
+  }
+  if(q.includes("ai")||q.includes("artificial intelligence")){
+    return "AI stands for artificial intelligence. It describes computer systems that perform tasks such as recognising patterns, understanding language, or generating content.";
+  }
+  if(q.includes("code")||q.includes("coding")||q.includes("program")){
+    return "Coding means writing instructions for computers. Start with HTML for webpages, then learn CSS and JavaScript.";
+  }
+  return "I'm a simple demo tutor, so I don't know that answer yet. Try asking about AI, HTML, CSS, JavaScript, Python, or machine learning.";
+}
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  const q=input.value.trim();
+  if(!q)return;
+  addMessage(q,"user");
+  input.value="";
+  addMessage(answerQuestion(q),"bot");
+});
+</script>
+</body>
+</html>
